@@ -277,7 +277,7 @@
         }
 
         // Form Handling
-        const scriptURL = 'YOUR_APPS_SCRIPT_URL'; 
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwnMEKpASnAViQUP3qFYdYxkksKs2Mdq2ogmKeNiYfo3SIhmwjozBDEI3KkScD49V_n/exec'; 
         const form = document.getElementById('rsvpForm');
 
         form.addEventListener('submit', e => {
@@ -303,7 +303,7 @@
 
             fetch(scriptURL, { method: 'POST', body: formData })
                 .then(response => {
-                    statusMsg.innerHTML = "❤️ Thank you! We can't wait to see you.";
+                    statusMsg.innerHTML = "Success! RSVP saved. See you there!";
                     statusMsg.style.color = "green";
                     form.reset();
                 })
