@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shashi & Thimira Wedding</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --gold: #c5a059; 
+            --gold-light: #e0c58e;
+            --white: #ffffff; 
+            --black: #0b0b0b; 
+            --soft-gray: #f4f4f4;
+        }
+
+        * { box-sizing: border-box; }
+
+        body { 
+            margin: 0; 
+            font-family: 'Montserrat', sans-serif; 
+            background: var(--black); 
+            color: #fff; 
+            text-align: center; 
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Hero Section with Parallax */
+        .hero { 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1000') center/cover fixed; 
+            position: relative;
+        }
+
+        .hero-content {
+            animation: fadeInScale 1.8s ease-out;
+        }
+
+        h1 { 
+            font-family: 'Cormorant Garamond', serif; 
+            font-size: clamp(2.5rem, 10vw, 5rem); 
+            letter-spacing: 8px; 
+            margin: 10px 0;
+            text-transform: uppercase;
+        }
+
+        .save-the-date {
+            letter-spacing: 7px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Buttons */
+        .btn { 
+            padding: 15px 40px; 
+            border: 1px solid var(--white); 
+            background: transparent; 
+            color: var(--white); 
+            cursor: pointer; 
+            text-transform: uppercase; 
+            margin-top: 30px; 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover { 
+            background: var(--white); 
+            color: var(--black); 
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Section Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Invitation Card Section */
+        #card-section { 
+            display: none; 
+            padding: 100px 20px; 
+            background: var(--black); 
+        }
+
+        .invitation-image { 
+            max-width: 90%; 
+            width: 600px;
+            height: auto; 
+            border: 1px solid var(--gold); 
+            padding: 10px;
+            background: #1a1a1a;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        /* RSVP Form Section - Glassmorphism */
+        #details { 
+            display: none; 
+            padding: 100px 20px; 
+            background: var(--soft-gray); 
+            color: #333; 
+            background-image: radial-gradient(#c5a05922 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .form-container { 
+            max-width: 550px; 
+            margin: 0 auto; 
+            text-align: left; 
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px;
+            border-radius: 2px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+        }
+
+        .guest-entry { 
+            background: #fff; 
+            padding: 20px; 
+            margin-bottom: 20px; 
+            border-left: 4px solid var(--gold); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            animation: slideIn 0.5s ease-out;
+        }
+
+        label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.75rem; text-transform: uppercase; color: #777; letter-spacing: 1px; }
+        input, select { width: 100%; padding: 14px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 0; font-family: inherit; }
+        input:focus { outline: none; border-color: var(--gold); }
+
+       .call-options {
+            text-align: center; /* Centers the text and inline-block links */
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee; /* Optional: adds a subtle separator */
+        }
+
+        .call-options p {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            color: #888;
+        }
+
+        /* Adjusting the links to be side-by-side or stacked cleanly */
+        .call-link { 
+            display: inline-block; 
+            margin: 10px 15px; 
+            color: var(--gold); 
+            text-decoration: none; 
+            font-weight: bold; 
+            transition: 0.3s;
+            letter-spacing: 1px;
+        }
+
+        /* Keyframes */
+        @keyframes fadeInScale {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="save-the-date">SAVE THE DATE</p>
+            <h1>SHASHI & THIMIRA</h1>
+            <p style="font-style: italic; opacity: 0.8;">Together with their families</p>
+            <button class="btn" onclick="showCard()">View Details</button>
+        </div>
+    </section>
+
+    <section id="card-section" class="reveal">
+        <img src="https://lh3.googleusercontent.com/u/0/d/1hNlahBjYNPA1SgTYlcEbB4gh9EkJHGiR=w1000" alt="Wedding Invitation Card" class="invitation-image">
+        <br>
+        <button class="btn" onclick="showRSVP()" style="border-color: var(--gold); color: var(--gold); margin-top: 50px;">Confirm Attendance</button>
+    </section>
+
+    <section id="details">
+        <div class="form-container reveal">
+            <h2 style="font-family: 'Cormorant Garamond'; text-align: center; font-size: 2.8rem; margin-top:0;">RSVP</h2>
+            <p style="text-align: center; margin-bottom: 40px; color: #666;">Kindly respond by the 20th of October</p>
+            
+            <form id="rsvpForm">
+                <label>Your Full Name</label>
+                <input type="text" name="userName" id="userName" placeholder="e.g. John Doe" required>
+
+                <label>Total Number of Guests</label>
+                <input type="number" id="guestCount" name="guestCount" value="1" min="1" max="10" onchange="generateGuestOptions()">
+
+                <div id="dynamicGuests"></div>
+
+                <button type="submit" class="btn" style="background:var(--black); width:100%; border:none; color:#fff;">Submit RSVP</button>
+            </form>
+
+            <div id="statusMsg" style="text-align: center; margin-top: 20px;"></div>
+
+           <div class="call-options">
+                <p>or contact us directly via phone:</p>
+                <a href="tel:0711987956" class="call-link">071 198 7956</a>
+                <a href="tel:0721987956" class="call-link">072 198 7956</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Scroll Reveal Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+
+        function showCard() {
+            const cardSec = document.getElementById('card-section');
+            cardSec.style.display = 'block';
+            setTimeout(() => { cardSec.classList.add('active'); }, 10);
+            cardSec.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showRSVP() {
+            const detailsSec = document.getElementById('details');
+            detailsSec.style.display = 'block';
+            generateGuestOptions(); 
+            setTimeout(() => { detailsSec.querySelector('.form-container').classList.add('active'); }, 10);
+            detailsSec.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function generateGuestOptions() {
+            const count = document.getElementById('guestCount').value;
+            const container = document.getElementById('dynamicGuests');
+            container.innerHTML = ""; 
+
+            for (let i = 1; i <= count; i++) {
+                const div = document.createElement('div');
+                div.className = 'guest-entry';
+                div.innerHTML = `
+                    <p style="font-weight:bold; color:var(--gold); margin:0 0 15px 0; font-size: 0.8rem; letter-spacing:1px;">GUEST ${i} PREFERENCES</p>
+                    <label>Meal Choice</label>
+                    <select class="mealChoice" required>
+                        <option value="Non-Veg">Non-Vegetarian</option>
+                        <option value="Veg">Vegetarian</option>
+                    </select>
+                    <label>Drink Selection</label>
+                    <select class="drinkChoice" required>
+                        <option value="Alcohol">With Alcohol</option>
+                        <option value="Soft-Drinks">Soft Drinks Only</option>
+                    </select>
+                `;
+                container.appendChild(div);
+            }
+        }
+
+        // Form Handling
+        const scriptURL = 'YOUR_APPS_SCRIPT_URL'; 
+        const form = document.getElementById('rsvpForm');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const statusMsg = document.getElementById('statusMsg');
+            statusMsg.innerHTML = "Processing your invitation...";
+
+            let mealSummary = "";
+            let drinkSummary = "";
+            const meals = document.querySelectorAll('.mealChoice');
+            const drinks = document.querySelectorAll('.drinkChoice');
+
+            meals.forEach((m, index) => {
+                mealSummary += `G${index+1}: ${m.value} | `;
+                drinkSummary += `G${index+1}: ${drinks[index].value} | `;
+            });
+
+            const formData = new FormData();
+            formData.append('userName', document.getElementById('userName').value);
+            formData.append('guestCount', document.getElementById('guestCount').value);
+            formData.append('mealPref', mealSummary);
+            formData.append('drinkPref', drinkSummary);
+
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => {
+                    statusMsg.innerHTML = "❤️ Thank you! We can't wait to see you.";
+                    statusMsg.style.color = "green";
+                    form.reset();
+                })
+                .catch(error => {
+                    statusMsg.innerHTML = "Something went wrong. Please try again.";
+                    statusMsg.style.color = "red";
+                });
+        });
+    </script>
+</body>
+</html>
